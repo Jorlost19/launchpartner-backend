@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const secret = process.env.JWT_SECRET_KEY;
+const secret = 'What a secret!';
 
 const isLoggedIn = (req, res, next) => {
   if (req.headers.authorization) {
