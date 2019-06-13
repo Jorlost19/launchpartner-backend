@@ -33,4 +33,4 @@ const isValidPassword = (req, res, next) => {
       });
 };
 
-module.exports = { isLoggedIn, isAdmin, isValidEmail, isValidPassword };
+module.exports = { isLoggedIn, isValidEmail, isValidPassword };

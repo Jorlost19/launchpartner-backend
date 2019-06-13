@@ -6,7 +6,7 @@ const userRouter = require('../routes/usersRouter');
 
 const server = express();
 
-server.use(helmet(), cors(), express.json())
+server.use(helmet(), cors(), express.json({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 server.use('/users', userRouter);
 
 
