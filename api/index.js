@@ -9,7 +9,7 @@ const server = express();
 server.use(helmet(), cors(), express.json({ limit: '50mb', extended: true, parameterLimit: 50000 }))
 server.use('/users', userRouter);
 server.get('/', (req, res) => {
-    res.status(200).send('The API is running duh!')
+    res.status(200).send('<h1>The API is running duh!</h1>')
 })
 
 module.exports = server;
