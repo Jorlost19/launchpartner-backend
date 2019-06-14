@@ -18,7 +18,6 @@ server.use(methodOverride('_method'))
 
 const mongoURI = `mongodb+srv://jorge:dXgwmoWW7nZsP23O@graphql-mongodb-vcif4.mongodb.net/mernstack?retryWrites=true&w=majority`;
 conn = mongoose.createConnection(mongoURI,{ useNewUrlParser: true });
-
 let gfs;
 
 conn.once('open', () => {
@@ -47,6 +46,8 @@ const storage = new GridFSStorage({
 
 const upload = multer({ storage })
 
+
+
 server.post('/upload', upload.single('image'), (req, res) => {
     res.json({file: req.file})
 })
@@ -56,4 +57,4 @@ server.get('/', (req, res) => {
     res.status(200).send('<h1>The API is running duh!</h1>')
 })
 
-module.exports = server;
+module.exports = {server};

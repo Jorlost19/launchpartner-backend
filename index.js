@@ -1,4 +1,4 @@
-const server = require('./api');
+const {server} = require('./api');
 const { connect } = require('mongoose');
 const PORT = process.env.PORT || 7000
 connect(

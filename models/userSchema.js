@@ -17,9 +17,9 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    avatar: {
-        data: Buffer,
-        contentType: String
+    avatar_id: {
+        type: String,
+        required: true
     }
 })
 

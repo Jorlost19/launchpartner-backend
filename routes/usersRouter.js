@@ -23,7 +23,7 @@ router.post('/register', isValidEmail, isValidPassword, (req, res) => {
     const user = new User({...req.body});
     user.save()
         .then(user => res.status(201).json({token: generateToken({...user._doc, _id: user.id, password: null}),
-                                             user: {...user._doc, _id: user.id, password: null}       
+                                             user: {...user._doc, _id: user.id, password: null}  
                                                             }))
         .catch(err => {
             console.error(err);
@@ -53,6 +53,13 @@ router.post('/register', isValidEmail, isValidPassword, (req, res) => {
             console.error(err);
             throw err
         })
+}).put('/users/:id', (req, res) => {
+    const { id } = req.params;
+
+    const updated = User.findByIdAndUpdate(id, {$set: {
+        ...req.body
+      }}).then(res => console.log(res.data, updated))
+      .catch(err => console.error(err))
 })
 
 
