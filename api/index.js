@@ -52,6 +52,19 @@ server.post('/upload', upload.single('image'), (req, res) => {
     res.json({file: req.file})
 })
 
+server.get('/image/:filename', (req, res) => {
+    gfs.files.findOne({filename: req.params.filename }, (err, image) => {
+        if(!image||!image.length) {
+            return res.status(404).json({message: 'No image found matching that ID!'})
+        } else {
+            const readstream = gfs.createReadStream(image.filename);
+            readstream.pipe(res);
+            console.log('image', image);
+            console.log('readstream', readstream);
+        }
+    })
+})
+
 server.use('/users', userRouter);
 server.get('/', (req, res) => {
     res.status(200).send('<h1>The API is running duh!</h1>')
